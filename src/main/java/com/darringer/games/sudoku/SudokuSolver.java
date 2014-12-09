@@ -11,6 +11,8 @@ package com.darringer.games.sudoku;
 public class SudokuSolver {
 
 	private SudokuStrategy nakedSinglesStrategy = new SudokuNakedSinglesStrategy();
+	private SudokuStrategy hiddenSinglesStrategy = new SudokuHiddenSinglesStrategy();
+
 	
 	/**
 	 * Return the solution for a given {@link SudokuModel} or throw a 
@@ -28,6 +30,7 @@ public class SudokuSolver {
 			for (int x=0; x < SudokuModel.SIZE; x++) {
 				for (int y=0; y < SudokuModel.SIZE; y++) {
 					model = nakedSinglesStrategy.applyStrategy(model, x, y);
+					model = hiddenSinglesStrategy.applyStrategy(model, x, y);
 				}
 			}
 			int currentOptionCount = getTotalOptionCount(model);

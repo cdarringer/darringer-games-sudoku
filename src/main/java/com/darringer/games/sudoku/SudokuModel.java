@@ -22,6 +22,18 @@ class SudokuModel {
 	List<Set<Integer>> model = new ArrayList<Set<Integer>>(SIZE * SIZE);
 	
 	/**
+	 * Construct an empty Sudoku model
+	 */
+	public SudokuModel() {
+		for (int y=0; y < SIZE; y++) {
+			for (int x=0; x < SIZE; x++) {
+				model.add(getFullSet());
+			}
+		}			
+	}
+	
+	
+	/**
 	 * Construct a model from a string containing rows separated 
 	 * by newline characters.
 	 * 
@@ -73,6 +85,20 @@ class SudokuModel {
 	public Set<Integer> getSet(int x, int y) {
 		return model.get((y * SIZE) + x);
 	}
+
+	/**
+	 * Set the set of possible values for the Sudoku square at the 
+	 * given index
+	 * 
+	 * @param x
+	 * @param y
+	 * @param set
+	 */
+	public void setSet(int x, int y, Set<Integer> set) {
+		model.set((y * SIZE) + x, set);
+	}
+	
+	
 	
 	/**
 	 * 

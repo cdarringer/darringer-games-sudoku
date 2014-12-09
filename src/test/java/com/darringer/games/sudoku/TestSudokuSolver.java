@@ -83,7 +83,6 @@ public class TestSudokuSolver {
 	 * and pointed pair techniques
 	 */
 	@Test
-	@Ignore
 	public void testHardLevelPuzzle1() {
 		SudokuSolver solver = new SudokuSolver();
 		String inputString = 

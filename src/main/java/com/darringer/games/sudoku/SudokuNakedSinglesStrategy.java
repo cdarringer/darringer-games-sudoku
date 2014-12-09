@@ -47,7 +47,7 @@ public class SudokuNakedSinglesStrategy implements SudokuStrategy {
 				for (int yDelta=0; yDelta < 3; yDelta++) {
 					int xSubSquare = xRoot + xDelta;
 					int	ySubSquare = yRoot + yDelta;
-					if ((xSubSquare != x) && (ySubSquare != y)) {
+					if ((xSubSquare != x) || (ySubSquare != y)) {
 						if (model.getSet(xSubSquare, ySubSquare).removeAll(currentSet)) {
 							log.debug(String.format("Removed subsquare value at %d, %d...", xSubSquare, ySubSquare));													
 						}
