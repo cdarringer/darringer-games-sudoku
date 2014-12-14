@@ -10,6 +10,7 @@ import org.junit.Test;
 /**
  * 
  * @author cdarringer
+ * @author fdarringer
  *
  */
 public class TestSudokuSolver {
