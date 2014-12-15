@@ -35,7 +35,7 @@ public class SudokuSolver {
 			}
 			int currentOptionCount = getTotalOptionCount(model);
 			if (currentOptionCount == previousOptionCount) {
-				throw new IllegalArgumentException("The given model appears to be unsolvable.  Stuck at option count: " + currentOptionCount);
+				throw new IllegalArgumentException("The given model appears to be unsolvable with current strategies.  Stuck at option count: " + currentOptionCount);
 			} else {
 				previousOptionCount = currentOptionCount;
 			}
@@ -48,12 +48,17 @@ public class SudokuSolver {
 	 * 
 	 * @param model
 	 * @return
+	 * @throws IllegalArgumentException
 	 */
-	private int getTotalOptionCount(SudokuModel model) {
+	private int getTotalOptionCount(SudokuModel model) throws IllegalArgumentException {
 		int optionCount = 0;
 		for (int x=0; x < SudokuModel.SIZE; x++) {
 			for (int y=0; y < SudokuModel.SIZE; y++) {
-				optionCount += model.getSet(x, y).size();
+				int currentOptionCount = model.getSet(x, y).size();
+				if (currentOptionCount == 0) {
+					throw new IllegalArgumentException(String.format("Square at %d, %d unexpectedly went to 0 options", x, y));
+				}
+				optionCount += currentOptionCount;
 			}
 		}
 		return optionCount;

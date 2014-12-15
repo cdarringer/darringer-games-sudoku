@@ -17,6 +17,7 @@ public class SudokuPointedStrategy implements SudokuStrategy {
 	@Override
 	public SudokuModel applyStrategy(SudokuModel model, int x, int y) {
 		// is this a subsquare "anchor" square?
+		/**
 		if (SudokuModel.isAnchor(x, y)) {
 			log.debug("Anchor square detected, applying pointed strategy to current subsquare...");
 				
@@ -49,6 +50,7 @@ public class SudokuPointedStrategy implements SudokuStrategy {
 			// it does, remove this number from the entire column
 
 		}
+		**/
 		return model;
 	}
 
