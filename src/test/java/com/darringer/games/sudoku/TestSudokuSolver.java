@@ -80,6 +80,38 @@ public class TestSudokuSolver {
 	}
 
 	/**
+	 * 
+	 */
+	@Test
+	public void testEasyPuzzle3() {
+		SudokuSolver solver = new SudokuSolver();
+		String inputString = 
+				"- - - - - - 3 4 5\n" +
+				"4 7 2 5 - - - - -\n" +
+				"- - - 8 4 9 - - 6\n" + 
+				"- 4 - - - - 8 3 1\n" +
+				"- - - 4 2 1 - - -\n" +
+				"6 5 1 - - - - 9 -\n" +
+				"1 - - 3 7 6 - - -\n" + 
+				"- - - - - 2 4 1 3\n" +
+				"9 3 8 - - - - - -\n"; 
+		SudokuModel inputModel = new SudokuModel(inputString);
+		String answerString = 
+				"8 9 6 2 1 7 3 4 5\n" + 
+				"4 7 2 5 6 3 1 8 9\n" + 
+				"5 1 3 8 4 9 7 2 6\n" +
+				"2 4 7 6 9 5 8 3 1\n" + 
+				"3 8 9 4 2 1 5 6 7\n" + 
+				"6 5 1 7 3 8 2 9 4\n" + 
+				"1 2 4 3 7 6 9 5 8\n" + 
+				"7 6 5 9 8 2 4 1 3\n" + 
+				"9 3 8 1 5 4 6 7 2\n"; 
+		SudokuModel answerModel = new SudokuModel(answerString);
+		SudokuModel resultModel = solver.solve(inputModel);
+		assertEquals(answerModel, resultModel);	
+	}
+	
+	/**
 	 * This puzzle required naked single, hidden singles, 
 	 * and pointed pair techniques
 	 */
