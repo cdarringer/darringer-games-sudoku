@@ -12,9 +12,9 @@ import org.apache.log4j.Logger;
  * @author cdarringer
  *
  */
-public class SudokuNakedSinglesStrategy implements SudokuStrategy {
+public class SudokuNakedStrategy implements SudokuStrategy {
 
-	private Logger log = Logger.getLogger(SudokuNakedSinglesStrategy.class);
+	private Logger log = Logger.getLogger(SudokuNakedStrategy.class);
 	
 	@Override
 	public SudokuModel applyStrategy(SudokuModel model, int x, int y) {

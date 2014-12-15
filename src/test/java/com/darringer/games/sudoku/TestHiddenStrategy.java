@@ -12,9 +12,9 @@ import org.junit.Test;
  * @author cdarringer
  *
  */
-public class TestHiddenSinglesStrategy {
+public class TestHiddenStrategy {
 
-	private SudokuStrategy strategy = new SudokuHiddenSinglesStrategy();
+	private SudokuStrategy strategy = new SudokuHiddenStrategy();
 
 	
 	@Test

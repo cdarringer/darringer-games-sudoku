@@ -10,9 +10,9 @@ import org.apache.log4j.Logger;
  * @author cdarringer
  * 
  */
-public class SudokuHiddenSinglesStrategy implements SudokuStrategy {
+public class SudokuHiddenStrategy implements SudokuStrategy {
 
-	private Logger log = Logger.getLogger(SudokuHiddenSinglesStrategy.class);
+	private Logger log = Logger.getLogger(SudokuHiddenStrategy.class);
 
 	/**
 	 * 

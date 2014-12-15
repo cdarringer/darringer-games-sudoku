@@ -10,8 +10,8 @@ package com.darringer.games.sudoku;
  */
 public class SudokuSolver {
 
-	private SudokuStrategy nakedSinglesStrategy = new SudokuNakedSinglesStrategy();
-	private SudokuStrategy hiddenSinglesStrategy = new SudokuHiddenSinglesStrategy();
+	private SudokuStrategy nakedSinglesStrategy = new SudokuNakedStrategy();
+	private SudokuStrategy hiddenSinglesStrategy = new SudokuHiddenStrategy();
 
 	
 	/**

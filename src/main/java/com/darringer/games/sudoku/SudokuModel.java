@@ -152,4 +152,14 @@ class SudokuModel {
 		}
 		return output.toString();
 	}
+	
+	/**
+	 * 
+	 * @param x
+	 * @param y
+	 * @return
+	 */
+	public static boolean isAnchor(int x, int y) {
+		return (((x % 3) == 0) && ((y % 3) == 0)); 
+	}
 }
