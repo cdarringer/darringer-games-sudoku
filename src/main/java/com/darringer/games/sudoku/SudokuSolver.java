@@ -1,5 +1,13 @@
 package com.darringer.games.sudoku;
 
+import static com.darringer.games.sudoku.SudokuModel.SIZE;
+import static com.darringer.games.sudoku.SudokuModel.SOLVED_OPTION_COUNT;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.log4j.Logger;
+
 
 /**
  * Contains logic for solving a Sudoku puzzle
@@ -10,9 +18,20 @@ package com.darringer.games.sudoku;
  */
 public class SudokuSolver {
 
+	private Logger log = Logger.getLogger(SudokuSolver.class);
+	private List<SudokuStrategy> strategies = new ArrayList<SudokuStrategy>();
 	private SudokuStrategy nakedSinglesStrategy = new SudokuNakedStrategy();
 	private SudokuStrategy hiddenSinglesStrategy = new SudokuHiddenStrategy();
 
+	/**
+	 * 
+	 */
+	public SudokuSolver() {
+		strategies.add(0, new SudokuNakedStrategy());
+		strategies.add(1, new SudokuHiddenStrategy());
+		strategies.add(2, new SudokuPointedStrategy());
+	}
+	
 	
 	/**
 	 * Return the solution for a given {@link SudokuModel} or throw a 
@@ -23,23 +42,32 @@ public class SudokuSolver {
 	 * @throws IllegalArgumentException
 	 */
 	public SudokuModel solve(SudokuModel model) throws IllegalArgumentException {
-		int solvedOptionCount = (SudokuModel.SIZE * SudokuModel.SIZE);
+		long startTime = System.currentTimeMillis();
+		int currentStrategyIndex = 0;
 		int previousOptionCount = getTotalOptionCount(model);
-		while (previousOptionCount > solvedOptionCount) {	
+		while (previousOptionCount > SOLVED_OPTION_COUNT) {	
 			// for each cell..
-			for (int x=0; x < SudokuModel.SIZE; x++) {
-				for (int y=0; y < SudokuModel.SIZE; y++) {
-					model = nakedSinglesStrategy.applyStrategy(model, x, y);
-					model = hiddenSinglesStrategy.applyStrategy(model, x, y);
-				}
+			for (int x=0; x < SIZE; x++) {
+				for (int y=0; y < SIZE; y++) {
+					SudokuStrategy currentStrategy = strategies.get(currentStrategyIndex);
+					model = currentStrategy.applyStrategy(model, x, y);				}
 			}
 			int currentOptionCount = getTotalOptionCount(model);
 			if (currentOptionCount == previousOptionCount) {
-				throw new IllegalArgumentException("The given model appears to be unsolvable with current strategies.  Stuck at option count: " + currentOptionCount);
+				currentStrategyIndex++;
+				if (currentStrategyIndex == strategies.size()) {
+					// we are out of things to try!
+					log.error("Could not solve puzzle with existing strategies");
+					throw new IllegalArgumentException("The given model appears to be unsolvable with current strategies.  Stuck at option count: " + currentOptionCount);
+				} else {
+					log.info("We are stuck, trying the next strategy...");
+				}
 			} else {
+				currentStrategyIndex = 0;
 				previousOptionCount = currentOptionCount;
 			}
 		}
+		log.info(String.format("Model solved in %d ms", System.currentTimeMillis() - startTime));
 		return model;
 	}
 		
@@ -52,11 +80,13 @@ public class SudokuSolver {
 	 */
 	private int getTotalOptionCount(SudokuModel model) throws IllegalArgumentException {
 		int optionCount = 0;
-		for (int x=0; x < SudokuModel.SIZE; x++) {
-			for (int y=0; y < SudokuModel.SIZE; y++) {
+		for (int x=0; x < SIZE; x++) {
+			for (int y=0; y < SIZE; y++) {
 				int currentOptionCount = model.getSet(x, y).size();
 				if (currentOptionCount == 0) {
-					throw new IllegalArgumentException(String.format("Square at %d, %d unexpectedly went to 0 options", x, y));
+					String message = String.format("Square at %d, %d unexpectedly went to 0 options", x, y);
+					log.error(message);
+					throw new IllegalArgumentException(message);
 				}
 				optionCount += currentOptionCount;
 			}

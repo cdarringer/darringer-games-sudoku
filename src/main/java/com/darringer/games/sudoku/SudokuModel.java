@@ -17,6 +17,7 @@ import java.util.Set;
 class SudokuModel {
 	
 	static final int SIZE = 9;
+	static final int SOLVED_OPTION_COUNT = SIZE * SIZE;
 	static final String EMPTY_VALUE = "-";
 	
 	List<Set<Integer>> model = new ArrayList<Set<Integer>>(SIZE * SIZE);

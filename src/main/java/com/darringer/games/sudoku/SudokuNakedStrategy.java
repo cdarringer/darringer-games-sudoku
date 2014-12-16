@@ -29,11 +29,11 @@ public class SudokuNakedStrategy implements SudokuStrategy {
 			if (currentSet.size() == 1) {
 				// this cell has a "naked" single value
 				// remove it from all cells in the same row...
-				log.debug(String.format("SudokuNakedSingles Strategy being applied at %d, %d...", x, y));
+				log.info(String.format("SudokuNakedSingles Strategy being applied at %d, %d...", x, y));
 				for (int i=0; i < SudokuModel.SIZE; i++) {
 					if (i != x) {
 						if (model.getSet(i, y).removeAll(currentSet)) {
-							log.info(String.format("Removed row value at %d, %d...", i, y));						
+							log.debug(String.format("Removed row value at %d, %d...", i, y));						
 						}
 					}
 				}
@@ -42,7 +42,7 @@ public class SudokuNakedStrategy implements SudokuStrategy {
 				for (int i=0; i < SudokuModel.SIZE; i++) {
 					if (i != y) {
 						if (model.getSet(x, i).removeAll(currentSet)) {
-							log.info(String.format("Removed column value at %d, %d...", x, i));						
+							log.debug(String.format("Removed column value at %d, %d...", x, i));						
 						}
 					}
 				}
@@ -56,7 +56,7 @@ public class SudokuNakedStrategy implements SudokuStrategy {
 						int	ySubSquare = yRoot + yDelta;
 						if ((xSubSquare != x) || (ySubSquare != y)) {
 							if (model.getSet(xSubSquare, ySubSquare).removeAll(currentSet)) {
-								log.info(String.format("Removed subsquare value at %d, %d...", xSubSquare, ySubSquare));													
+								log.debug(String.format("Removed subsquare value at %d, %d...", xSubSquare, ySubSquare));													
 							}
 						}
 					}
