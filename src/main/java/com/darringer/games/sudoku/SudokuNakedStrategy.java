@@ -19,11 +19,12 @@ import org.apache.log4j.Logger;
 public class SudokuNakedStrategy implements SudokuStrategy {
 
 	private Logger log = Logger.getLogger(SudokuNakedStrategy.class);
-	
 	private Set<SudokuLocation> checkedLocations = new HashSet<SudokuLocation>();
+	private long elapsedTime = 0l;
 	
 	@Override
 	public SudokuModel applyStrategy(SudokuModel model, int x, int y) {
+		long startTime = System.currentTimeMillis();
 		if (!checkedLocations.contains(new SudokuLocation(x, y))) {
 			Set<Integer> currentSet = model.getSet(x, y);
 			if (currentSet.size() == 1) {
@@ -66,7 +67,19 @@ public class SudokuNakedStrategy implements SudokuStrategy {
 				checkedLocations.add(new SudokuLocation(x, y));
 			}		
 		}
+		elapsedTime += (System.currentTimeMillis() - startTime);
 		return model;
 	}
+
+	@Override
+	public String getName() {
+		return "Naked Strategy";
+	}
+
+	@Override
+	public long getElapsedTimeInStrategy() {
+		return elapsedTime;
+	}
+	
 }
 

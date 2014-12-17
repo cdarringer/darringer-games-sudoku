@@ -20,8 +20,6 @@ public class SudokuSolver {
 
 	private Logger log = Logger.getLogger(SudokuSolver.class);
 	private List<SudokuStrategy> strategies = new ArrayList<SudokuStrategy>();
-	private SudokuStrategy nakedSinglesStrategy = new SudokuNakedStrategy();
-	private SudokuStrategy hiddenSinglesStrategy = new SudokuHiddenStrategy();
 
 	/**
 	 * 
@@ -67,7 +65,12 @@ public class SudokuSolver {
 				previousOptionCount = currentOptionCount;
 			}
 		}
-		log.info(String.format("Model solved in %d ms", System.currentTimeMillis() - startTime));
+		log.info(String.format("Model solved in %d ms:", System.currentTimeMillis() - startTime));
+		for (SudokuStrategy currentStrategy : strategies) {
+			log.info(String.format("   %d ms spent in %s", 
+					currentStrategy.getElapsedTimeInStrategy(), 
+					currentStrategy.getName()));
+		}
 		return model;
 	}
 		

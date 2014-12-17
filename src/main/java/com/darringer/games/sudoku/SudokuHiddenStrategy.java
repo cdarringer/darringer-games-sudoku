@@ -13,6 +13,7 @@ import org.apache.log4j.Logger;
 public class SudokuHiddenStrategy implements SudokuStrategy {
 
 	private Logger log = Logger.getLogger(SudokuHiddenStrategy.class);
+	long elapsedTime = 0l;
 
 	/**
 	 * 
@@ -21,6 +22,7 @@ public class SudokuHiddenStrategy implements SudokuStrategy {
 	public SudokuModel applyStrategy(SudokuModel model, int x, int y) {
 
 		// this strategy only applies to cells with more than one possible value
+		long startTime = System.currentTimeMillis();
 		if (model.getSet(x, y).size() > 1) {
 
 			// build a set of all values in this row
@@ -87,6 +89,17 @@ public class SudokuHiddenStrategy implements SudokuStrategy {
 			log.debug(String.format("No hidden singles at %d, %d", x, y));
 
 		}
+		elapsedTime += (System.currentTimeMillis() - startTime);
 		return model;
+	}
+
+	@Override
+	public String getName() {
+		return "Hidden Strategy";
+	}
+
+	@Override
+	public long getElapsedTimeInStrategy() {
+		return elapsedTime;
 	}
 }

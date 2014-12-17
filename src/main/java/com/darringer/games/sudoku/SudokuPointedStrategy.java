@@ -13,9 +13,11 @@ import org.apache.log4j.Logger;
 public class SudokuPointedStrategy implements SudokuStrategy {
 	
 	Logger log = Logger.getLogger(SudokuPointedStrategy.class);
+	private long elapsedTime = 0l;
 
 	@Override
 	public SudokuModel applyStrategy(SudokuModel model, int x, int y) {
+		long startTime = System.currentTimeMillis();
 		// is this a subsquare "anchor" square?
 		/**
 		if (SudokuModel.isAnchor(x, y)) {
@@ -51,7 +53,18 @@ public class SudokuPointedStrategy implements SudokuStrategy {
 
 		}
 		**/
+		elapsedTime += (System.currentTimeMillis() - startTime);
 		return model;
+	}
+
+	@Override
+	public String getName() {
+		return "Pointed Strategy";
+	}
+
+	@Override
+	public long getElapsedTimeInStrategy() {
+		return elapsedTime;
 	}
 
 }
