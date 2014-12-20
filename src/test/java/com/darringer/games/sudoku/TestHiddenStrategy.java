@@ -21,59 +21,15 @@ public class TestHiddenStrategy {
 	public void testHiddenSingleRow() {
 		SudokuModel inputModel = new SudokuModel();
 		
-		// at 0, 1 we have 3, 4, 7, 9
-		Set<Integer> options = new HashSet<Integer>();
-		options.add(3);
-		options.add(4);
-		options.add(7);
-		options.add(9);
-		inputModel.setSet(0, 1, options);
-
-		// at 1, 1 we have 4, 7
-		options = new HashSet<Integer>();
-		options.add(4);
-		options.add(7);
-		inputModel.setSet(1, 1, options);
-
-		// at 2, 1 we have 3, 4, 9
-		options = new HashSet<Integer>();
-		options.add(3);
-		options.add(4);
-		options.add(9);
-		inputModel.setSet(2, 1, options);
-
-		// at 3, 1 we have 4, 6, 9
-		options = new HashSet<Integer>();
-		options.add(4);
-		options.add(6);
-		options.add(9);
-		inputModel.setSet(3, 1, options);
-
-		// at 4, 1 we have 2
-		options = new HashSet<Integer>();
-		options.add(2);
-		inputModel.setSet(4, 1, options);
-		
-		// at 5, 1 we have 4, 9
-		options = new HashSet<Integer>();
-		options.add(4);
-		options.add(9);
-		inputModel.setSet(5, 1, options);
-		
-		// at 6, 1 we have 8
-		options = new HashSet<Integer>();
-		options.add(8);
-		inputModel.setSet(6, 1, options);
-		
-		// at 7, 1 we have 5
-		options = new HashSet<Integer>();
-		options.add(5);
-		inputModel.setSet(7, 1, options);
-		
-		// at 8, 1 we have 1
-		options = new HashSet<Integer>();
-		options.add(1);
-		inputModel.setSet(8, 1, options);
+		inputModel.setNumbersAtLocation(0, 1, 3, 4, 7, 9);
+		inputModel.setNumbersAtLocation(1, 1, 4, 7);
+		inputModel.setNumbersAtLocation(2, 1, 3, 4, 9);
+		inputModel.setNumbersAtLocation(3, 1, 4, 6, 9);
+		inputModel.setNumbersAtLocation(4, 1, 2);
+		inputModel.setNumbersAtLocation(5, 1, 4, 9);
+		inputModel.setNumbersAtLocation(6, 1, 8);
+		inputModel.setNumbersAtLocation(7, 1, 5);
+		inputModel.setNumbersAtLocation(8, 1, 1);
 		
 		SudokuModel answerModel = strategy.applyStrategy(inputModel, 3, 1);
 
@@ -87,59 +43,15 @@ public class TestHiddenStrategy {
 	public void testHiddenSingleColumn() {
 		SudokuModel inputModel = new SudokuModel();
 		
-		// at 1, 0 we have 3, 4, 7, 9
-		Set<Integer> options = new HashSet<Integer>();
-		options.add(3);
-		options.add(4);
-		options.add(7);
-		options.add(9);
-		inputModel.setSet(1, 0, options);
-
-		// at 1, 1 we have 4, 7
-		options = new HashSet<Integer>();
-		options.add(4);
-		options.add(7);
-		inputModel.setSet(1, 1, options);
-
-		// at 1, 2 we have 3, 4, 9
-		options = new HashSet<Integer>();
-		options.add(3);
-		options.add(4);
-		options.add(9);
-		inputModel.setSet(1, 2, options);
-
-		// at 1, 3 we have 4, 6, 9
-		options = new HashSet<Integer>();
-		options.add(4);
-		options.add(6);
-		options.add(9);
-		inputModel.setSet(1, 3, options);
-
-		// at 1, 4 we have 2
-		options = new HashSet<Integer>();
-		options.add(2);
-		inputModel.setSet(1, 4, options);
-		
-		// at 1, 5 we have 4, 9
-		options = new HashSet<Integer>();
-		options.add(4);
-		options.add(9);
-		inputModel.setSet(1, 5, options);
-		
-		// at 1, 6 we have 8
-		options = new HashSet<Integer>();
-		options.add(8);
-		inputModel.setSet(1, 6, options);
-		
-		// at 1, 7 we have 5
-		options = new HashSet<Integer>();
-		options.add(5);
-		inputModel.setSet(1, 7, options);
-		
-		// at 1, 8 we have 1
-		options = new HashSet<Integer>();
-		options.add(1);
-		inputModel.setSet(1, 8, options);
+		inputModel.setNumbersAtLocation(1, 0, 3, 4, 7, 9);
+		inputModel.setNumbersAtLocation(1, 1, 4, 7);
+		inputModel.setNumbersAtLocation(1, 2, 3, 4, 9);
+		inputModel.setNumbersAtLocation(1, 3, 4, 6, 9);
+		inputModel.setNumbersAtLocation(1, 4, 2);
+		inputModel.setNumbersAtLocation(1, 5, 4, 9);
+		inputModel.setNumbersAtLocation(1, 6, 8);
+		inputModel.setNumbersAtLocation(1, 7, 5);
+		inputModel.setNumbersAtLocation(1, 8, 1);
 		
 		SudokuModel answerModel = strategy.applyStrategy(inputModel, 1, 3);
 
@@ -152,59 +64,15 @@ public class TestHiddenStrategy {
 	public void testHiddenSingleSubSquare() {
 		SudokuModel inputModel = new SudokuModel();
 		
-		// at 0, 0 we have 3, 4, 7, 9
-		Set<Integer> options = new HashSet<Integer>();
-		options.add(3);
-		options.add(4);
-		options.add(7);
-		options.add(9);
-		inputModel.setSet(0, 0, options);
-
-		// at 1, 0 we have 4, 7
-		options = new HashSet<Integer>();
-		options.add(4);
-		options.add(7);
-		inputModel.setSet(1, 0, options);
-
-		// at 2, 0 we have 3, 4, 9
-		options = new HashSet<Integer>();
-		options.add(3);
-		options.add(4);
-		options.add(9);
-		inputModel.setSet(2, 0, options);
-
-		// at 0, 1 we have 4, 6, 9
-		options = new HashSet<Integer>();
-		options.add(4);
-		options.add(6);
-		options.add(9);
-		inputModel.setSet(0, 1, options);
-
-		// at 1, 1 we have 2
-		options = new HashSet<Integer>();
-		options.add(2);
-		inputModel.setSet(1, 1, options);
-		
-		// at 2, 1 we have 4, 9
-		options = new HashSet<Integer>();
-		options.add(4);
-		options.add(9);
-		inputModel.setSet(2, 1, options);
-		
-		// at 0, 2 we have 8
-		options = new HashSet<Integer>();
-		options.add(8);
-		inputModel.setSet(0, 2, options);
-		
-		// at 1, 2 we have 5
-		options = new HashSet<Integer>();
-		options.add(5);
-		inputModel.setSet(1, 2, options);
-		
-		// at 2, 2 we have 1
-		options = new HashSet<Integer>();
-		options.add(1);
-		inputModel.setSet(2, 2, options);
+		inputModel.setNumbersAtLocation(0, 0, 3, 4, 7, 9);
+		inputModel.setNumbersAtLocation(1, 0, 4, 7);
+		inputModel.setNumbersAtLocation(2, 0, 3, 4, 9);
+		inputModel.setNumbersAtLocation(0, 1, 4, 6, 9);
+		inputModel.setNumbersAtLocation(1, 1, 2);
+		inputModel.setNumbersAtLocation(2, 1, 4, 9);
+		inputModel.setNumbersAtLocation(0, 2, 8);
+		inputModel.setNumbersAtLocation(1, 2, 5);
+		inputModel.setNumbersAtLocation(2, 2, 1);		
 		
 		SudokuModel answerModel = strategy.applyStrategy(inputModel, 0, 1);
 

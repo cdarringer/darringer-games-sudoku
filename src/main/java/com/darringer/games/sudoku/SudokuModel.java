@@ -100,6 +100,20 @@ class SudokuModel {
 	}
 	
 	
+	/**
+	 * 
+	 * @param x
+	 * @param y
+	 * @param values
+	 */
+	public void setNumbersAtLocation(int x, int y, int... values) {
+		Set<Integer> options = new HashSet<Integer>();
+		for (int value : values) {
+			options.add(value);
+		}
+		setSet(x, y, options);
+	}
+	
 	
 	/**
 	 * 
