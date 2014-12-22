@@ -143,6 +143,70 @@ public class TestSudokuSolver {
 		assertEquals(answerModel, resultModel);	
 	}
 	
+	/**
+	 * 
+	 */
+	@Test
+	public void testEasyPuzzle5() {
+		SudokuSolver solver = new SudokuSolver();
+		String inputString = 
+				"6 5 - 4 - - - - -\n" +
+				"8 9 - 1 7 2 - - 6\n" +
+				"7 3 - - - - - - -\n" + 
+				"2 - - - - 8 - - 4\n" +
+				"5 - - 2 - 6 - - 7\n" +
+				"1 - - 9 - - - - 3\n" +
+				"- - - - - - - 4 5\n" + 
+				"9 - - 6 5 4 - 8 1\n"+ 
+				"- - - - - 1 - 2 9\n"; 
+		SudokuModel inputModel = new SudokuModel(inputString);
+		String answerString = 
+				 "6 5 2 4 9 3 1 7 8\n" + 
+				 "8 9 4 1 7 2 5 3 6\n" + 
+				 "7 3 1 8 6 5 4 9 2 \n" +
+				 "2 7 3 5 1 8 9 6 4\n" +
+				 "5 4 9 2 3 6 8 1 7\n" + 
+				 "1 8 6 9 4 7 2 5 3\n" + 
+				 "3 1 8 7 2 9 6 4 5\n" + 
+				 "9 2 7 6 5 4 3 8 1\n" + 
+				 "4 6 5 3 8 1 7 2 9\n"; 
+		SudokuModel answerModel = new SudokuModel(answerString);
+		SudokuModel resultModel = solver.solve(inputModel);
+		assertEquals(answerModel, resultModel);	
+	}
+
+	/**
+	 * 
+	 */
+	@Test
+	public void testEasyPuzzle6() {
+		SudokuSolver solver = new SudokuSolver();
+		String inputString = 
+				"8 4 - 6 9 - - - 2\n" +
+				"9 1 - - - - - - -\n" +
+				"5 - - - 3 8 - - 7\n" + 
+				"- - - 2 - 9 - - 6\n" +
+				"7 - - 8 - 5 - - 3\n" +
+				"2 - - 3 - 4 - - -\n" +
+				"3 - - 7 8 - - - 9\n" + 
+				"- - - - - - - 1 5\n"+ 
+				"4 - - - 5 6 - 2 8\n"; 
+		SudokuModel inputModel = new SudokuModel(inputString);
+		String answerString = 
+				"8 4 7 6 9 1 5 3 2\n" +  
+				"9 1 3 5 2 7 6 8 4\n" + 
+				"5 6 2 4 3 8 1 9 7\n" + 
+				"1 3 4 2 7 9 8 5 6\n" + 
+				"7 9 6 8 1 5 2 4 3\n" + 
+				"2 8 5 3 6 4 9 7 1\n" + 
+				"3 5 1 7 8 2 4 6 9\n" + 
+				"6 2 8 9 4 3 7 1 5\n" + 
+				"4 7 9 1 5 6 3 2 8\n";  
+		SudokuModel answerModel = new SudokuModel(answerString);
+		SudokuModel resultModel = solver.solve(inputModel);
+		assertEquals(answerModel, resultModel);	
+	}
+	
 	
 	/**
 	 * This puzzle required naked single, hidden singles, 
@@ -201,3 +265,4 @@ public class TestSudokuSolver {
 		}
 	}
 }
+
