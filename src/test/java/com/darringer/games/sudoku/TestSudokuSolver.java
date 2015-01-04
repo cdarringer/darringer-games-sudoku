@@ -143,7 +143,6 @@ public class TestSudokuSolver {
 	}
 	
 	/**
-	 * 
 	 */
 	@Test
 	public void testEasyPuzzle5() {
@@ -175,7 +174,6 @@ public class TestSudokuSolver {
 	}
 
 	/**
-	 * 
 	 */
 	@Test
 	public void testEasyPuzzle6() {
@@ -208,6 +206,69 @@ public class TestSudokuSolver {
 	
 	
 	/**
+	 */
+	@Test
+	public void testEasyPuzzle7() {
+		SudokuSolver solver = new SudokuSolver();
+		String inputString = 
+				"- - 2 - - 9 - 7 -\n" +
+				"- - 1 - 4 3 - - 8\n" +
+				"- - 4 - - 7 - - 5\n" + 
+				"- 8 - - 5 2 - 4 -\n" +
+				"6 7 - - - - - 2 9\n" +
+				"- 4 - 9 6 - - 1 -\n" +
+				"3 - - 4 - - 9 - -\n" + 
+				"9 - - 8 3 - 6 - -\n" +
+				"- 5 - 2 - - 7 - -\n"; 
+		SudokuModel inputModel = new SudokuModel(inputString);
+		String answerString = 
+				"5 6 2 1 8 9 4 7 3\n" + 
+				"7 9 1 5 4 3 2 6 8\n" + 
+				"8 3 4 6 2 7 1 9 5\n" +
+				"1 8 9 7 5 2 3 4 6\n" + 
+				"6 7 5 3 1 4 8 2 9\n" + 
+				"2 4 3 9 6 8 5 1 7\n" + 
+				"3 1 6 4 7 5 9 8 2\n" + 
+				"9 2 7 8 3 1 6 5 4\n" + 
+				"4 5 8 2 9 6 7 3 1\n"; 
+		SudokuModel answerModel = new SudokuModel(answerString);
+		SudokuModel resultModel = solver.solve(inputModel);
+		assertEquals(answerModel, resultModel);	
+	}
+	
+	/**
+	 */
+	@Test
+	public void testEasyPuzzle8() {
+		SudokuSolver solver = new SudokuSolver();
+		String inputString = 
+				"- 9 - - 3 6 5 - -\n" +
+				"- 5 - - - 4 - - 1\n" +
+				"- 2 1 - - 5 - - 7\n" + 
+				"- - 3 - 5 - 9 4 -\n" +
+				"- - 9 - 2 - 3 - -\n" +
+				"- 6 8 - 4 - 7 - -\n" +
+				"9 - - 4 - - 2 8 -\n" + 
+				"1 - - 5 - - - 7 -\n" +
+				"- - 4 7 9 - - 5 -\n"; 
+		SudokuModel inputModel = new SudokuModel(inputString);
+		String answerString = 
+				"8 9 7 1 3 6 5 2 4\n" + 
+				"3 5 6 2 7 4 8 9 1\n" + 
+				"4 2 1 9 8 5 6 3 7\n" +
+				"2 1 3 6 5 7 9 4 8\n" + 
+				"7 4 9 8 2 1 3 6 5\n" + 
+				"5 6 8 3 4 9 7 1 2\n" + 
+				"9 7 5 4 1 3 2 8 6\n" + 
+				"1 3 2 5 6 8 4 7 9\n" + 
+				"6 8 4 7 9 2 1 5 3\n"; 
+		SudokuModel answerModel = new SudokuModel(answerString);
+		SudokuModel resultModel = solver.solve(inputModel);
+		assertEquals(answerModel, resultModel);	
+	}
+
+	
+	/**
 	 * This puzzle required naked single, hidden singles, 
 	 * and pointed pair techniques
 	 */
@@ -238,8 +299,7 @@ public class TestSudokuSolver {
 		SudokuModel answerModel = new SudokuModel(answerString);
 		SudokuModel resultModel = solver.solve(inputModel);
 		assertEquals(answerModel, resultModel);	
-	}
-	
+	}	
 	
 		
 	@Test
