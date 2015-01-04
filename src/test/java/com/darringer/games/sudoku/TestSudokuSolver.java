@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -213,7 +212,7 @@ public class TestSudokuSolver {
 	 * and pointed pair techniques
 	 */
 	@Test
-	public void testHardLevelPuzzle1() {
+	public void testMediumLevelPuzzle1() {
 		SudokuSolver solver = new SudokuSolver();
 		String inputString = 
 				"- - - 2 - - - 6 3\n" +
