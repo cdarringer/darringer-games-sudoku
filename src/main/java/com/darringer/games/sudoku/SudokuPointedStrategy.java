@@ -180,7 +180,7 @@ public class SudokuPointedStrategy implements SudokuStrategy {
 	 */
 	private boolean isPointedPairInRow(SudokuModel model, int x, int y, int rowIndex, int number) {
 		for (int i=0; i < SudokuModel.SIZE; i++) {
-			if ((i < x) || ( i > (x+3))) {
+			if ((i < x) || ( i >= (x+3))) {
 				// this is a row square outside our subsquare
 				Set<Integer> currentSet = model.getSet(i,  y + rowIndex);
 				if (currentSet.contains(number)) {

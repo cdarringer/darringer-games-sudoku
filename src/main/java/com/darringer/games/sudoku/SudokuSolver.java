@@ -56,6 +56,7 @@ public class SudokuSolver {
 				if (currentStrategyIndex == strategies.size()) {
 					// we are out of things to try!
 					log.error("Could not solve puzzle with existing strategies");
+					log.error("\n" + model);
 					throw new IllegalArgumentException("The given model appears to be unsolvable with current strategies.  Stuck at option count: " + currentOptionCount);
 				} else {
 					log.info("We are stuck, trying the next strategy...");
