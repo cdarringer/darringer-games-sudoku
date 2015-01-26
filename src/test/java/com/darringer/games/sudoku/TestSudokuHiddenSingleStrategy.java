@@ -2,9 +2,6 @@ package com.darringer.games.sudoku;
 
 import static org.junit.Assert.assertTrue;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import org.junit.Test;
 
 /**
@@ -12,9 +9,9 @@ import org.junit.Test;
  * @author cdarringer
  *
  */
-public class TestHiddenStrategy {
+public class TestSudokuHiddenSingleStrategy {
 
-	private SudokuStrategy strategy = new SudokuHiddenStrategy();
+	private SudokuStrategy strategy = new SudokuHiddenSingleStrategy();
 
 	
 	@Test

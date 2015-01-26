@@ -25,9 +25,11 @@ public class SudokuSolver {
 	 * 
 	 */
 	public SudokuSolver() {
-		strategies.add(0, new SudokuNakedStrategy());
-		strategies.add(1, new SudokuHiddenStrategy());
+		strategies.add(0, new SudokuNakedSinglesStrategy());
+		strategies.add(1, new SudokuHiddenSingleStrategy());
 		strategies.add(2, new SudokuPointedStrategy());
+		strategies.add(3, new SudokuNakedPairsStrategy());
+		strategies.add(4, new SudokuNakedTriplesStrategy());
 	}
 	
 	

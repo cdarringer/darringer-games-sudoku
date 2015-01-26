@@ -9,13 +9,13 @@ import org.junit.Test;
  * @author cdarringer
  *
  */
-public class TestNakedStrategy {
+public class TestSudokuNakedSinglesStrategy {
 	
 	
 
 	@Test
 	public void testNakedSingle() {
-		SudokuStrategy strategy = new SudokuNakedStrategy();
+		SudokuStrategy strategy = new SudokuNakedSinglesStrategy();
 		String inputString = 
 				"- - - - - - - - -\n" +
 				"- - - - 1 - - - -\n" +

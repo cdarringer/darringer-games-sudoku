@@ -86,6 +86,31 @@ class SudokuModel {
 	public Set<Integer> getSet(int x, int y) {
 		return model.get((y * SIZE) + x);
 	}
+	
+	
+	/**
+	 * 
+	 * @param x
+	 * @param y
+	 * @param i
+	 * @param region
+	 * @return
+	 */
+	public Set<Integer> getSetForRegionIndex(int x, int y, int i, SudokuRegion region) {
+		switch (region) {
+		case ROW:
+			return getSet(i, y);
+		case COLUMN:
+			return getSet(x, i);
+		case SUBSQUARE:
+			int xDelta = i % 3;
+			int yDelta = i / 3;
+			return getSet(x + xDelta, y + yDelta);
+		default:
+			return null;
+		}	
+	}
+	
 
 	/**
 	 * Set the set of possible values for the Sudoku square at the 
@@ -174,7 +199,17 @@ class SudokuModel {
 	 * @param y
 	 * @return
 	 */
-	public static boolean isAnchor(int x, int y) {
+	public static boolean isSubSquareAnchor(int x, int y) {
 		return (((x % 3) == 0) && ((y % 3) == 0)); 
 	}
+	
+	public static boolean isRowAnchor(int x, int y) {
+		return (x == 0); 		
+	}
+	
+	public static boolean isColumnAnchor(int x, int y) {
+		return (y == 0); 
+	}
+	
+	
 }

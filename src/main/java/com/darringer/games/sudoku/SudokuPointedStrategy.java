@@ -21,7 +21,7 @@ public class SudokuPointedStrategy implements SudokuStrategy {
 		long startTime = System.currentTimeMillis();
 
 		// is this subsquare "anchor" square?
-		if (SudokuModel.isAnchor(x, y)) {
+		if (SudokuModel.isSubSquareAnchor(x, y)) {
 			log.debug("Anchor square detected, applying pointed strategy to current subsquare...");
 				
 			// count the instances each number appears in the entire subsquare
@@ -39,13 +39,13 @@ public class SudokuPointedStrategy implements SudokuStrategy {
 						if (currentSubSquareCount == currentSubSquareRowCount) {
 							// all instances in the subsquare are in this row
 							// remove this "pointed" number from the entire row...
-							log.info(String.format("Removing pointed pair from row for %d found in subsquare at anchor %d, %d", currentSubSquareRowValue, x, y)); 
+							log.info(String.format("Found pointed pair for %d in subsquare row at anchor %d, %d", currentSubSquareRowValue, x, y)); 
 							model = removePointedNumberFromRow(model, x, y, subSquareRowIndex, currentSubSquareRowValue);
 						} else {
 							// there are other instances of this pointed pair/triple 
 							// in the subsquare - can they be removed?
 							if (!isPointedPairInRow(model, x, y, subSquareRowIndex, currentSubSquareRowValue)) {
-								log.info(String.format("Removing pointed pair from subsquare for %d found in subsquare at anchor %d, %d", currentSubSquareRowValue, x, y)); 
+								log.info(String.format("Found pointed pair for %d in subsquare at anchor %d, %d", currentSubSquareRowValue, x, y)); 
 								model = removePointedNumberFromSubSquare(model, x, y, -1, subSquareRowIndex, currentSubSquareRowValue);
 								subSquareCounts = countSubSquareInstances(model, x, y); // recount
 							}
@@ -66,13 +66,13 @@ public class SudokuPointedStrategy implements SudokuStrategy {
 						if (currentSubSquareCount == currentSubSquareColumnCount) {
 							// all instances in the subsquare are in this column
 							// remove this "pointed" number from the entire column...
-							log.info(String.format("Removing pointed pair from column for %d found in subsquare at anchor %d, %d", currentSubSquareColumnValue, x, y)); 
+							log.info(String.format("Found pointed pair for %d found in subsquare column at anchor %d, %d", currentSubSquareColumnValue, x, y)); 
 							model = removePointedNumberFromColumn(model, x, y, subSquareColumnIndex, currentSubSquareColumnValue);
 						} else {
 							// there are other instances of this pointed pair/triple 
 							// in the subsquare - can they be removed?
 							if (!isPointedPairInColumn(model, x, y, subSquareColumnIndex, currentSubSquareColumnValue)) {
-								log.info(String.format("Removing pointed pair from subsquare for %d found in subsquare at anchor %d, %d", currentSubSquareColumnValue, x, y)); 
+								log.info(String.format("Found pointed pair for %d in subsquare at anchor %d, %d", currentSubSquareColumnValue, x, y)); 
 								model = removePointedNumberFromSubSquare(model, x, y, subSquareColumnIndex, -1, currentSubSquareColumnValue);
 								subSquareCounts = countSubSquareInstances(model, x, y); // recount
 							}

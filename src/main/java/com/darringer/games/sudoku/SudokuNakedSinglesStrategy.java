@@ -16,9 +16,9 @@ import org.apache.log4j.Logger;
  * @author cdarringer
  *
  */
-public class SudokuNakedStrategy implements SudokuStrategy {
+public class SudokuNakedSinglesStrategy implements SudokuStrategy {
 
-	private Logger log = Logger.getLogger(SudokuNakedStrategy.class);
+	private Logger log = Logger.getLogger(SudokuNakedSinglesStrategy.class);
 	private Set<SudokuLocation> checkedLocations = new HashSet<SudokuLocation>();
 	private long elapsedTime = 0l;
 	
@@ -30,7 +30,7 @@ public class SudokuNakedStrategy implements SudokuStrategy {
 			if (currentSet.size() == 1) {
 				// this cell has a "naked" single value
 				// remove it from all cells in the same row...
-				log.info(String.format("SudokuNakedSingles Strategy being applied at %d, %d...", x, y));
+				log.info(String.format("Strategy being applied at %d, %d...", x, y));
 				for (int i=0; i < SudokuModel.SIZE; i++) {
 					if (i != x) {
 						if (model.getSet(i, y).removeAll(currentSet)) {
@@ -73,7 +73,7 @@ public class SudokuNakedStrategy implements SudokuStrategy {
 
 	@Override
 	public String getName() {
-		return "Naked Strategy";
+		return "Naked Singles Strategy";
 	}
 
 	@Override

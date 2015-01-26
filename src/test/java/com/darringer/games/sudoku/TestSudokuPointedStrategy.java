@@ -1,9 +1,8 @@
 package com.darringer.games.sudoku;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -11,7 +10,7 @@ import org.junit.Test;
  * @author cdarringer
  *
  */
-public class TestPointedStrategy {
+public class TestSudokuPointedStrategy {
 
 	@Test
 	public void testPointedPairInRow() {
